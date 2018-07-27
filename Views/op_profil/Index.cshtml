@@ -1,0 +1,46 @@
+﻿@model IEnumerable<gestionarretecaisse.Models.op_profil>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="wrapper"><br />
+        <p>
+            @Html.ActionLink("ajouter un operation a un profil", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayName("operation")
+                </th>
+                <th>
+                    @Html.DisplayName("ID profil")
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.operation.libelle_operation )
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_profil )
+                    </td>
+                    <td>
+                        @Html.ActionLink("supprimer", "Delete", new { id = item.id_op_profil })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div></body></html>

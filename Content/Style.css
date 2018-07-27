@@ -1,0 +1,90 @@
+﻿
+
+
+.wrapper {
+	/* The main container div */
+	width:620px;
+	margin:100px auto 0;
+}
+
+h1{
+	font-family:Corbel,'Myriad Pro',Arial, Helvetica, sans-serif;
+	background:url('img/heading.png') no-repeat center top;
+	text-indent:-9999px;
+	overflow:hidden;
+	height:90px;
+}
+
+.searchForm{
+	/* The search form. */
+    
+	background-color:#dceef8;
+	padding:50px 50px 30px;
+	margin:80px 0;
+	position:relative;
+
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+    border: 2px solid #dceef8;
+}
+
+fieldset{
+	border:none;
+}
+
+.searchInputContainer{
+	/* This div contains the transparent search box */
+	width:420px;
+	height:36px;
+	background:url("img/searchBox.png") no-repeat;
+	float:left;
+	margin-right:12px;
+}
+
+.wrapper input {
+	/* The search text box. */
+	
+	border:none;
+	color:#000000;
+	background:url("searchBox.png") no-repeat;
+	
+	float:left;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:15px;
+	height:36px;
+	line-height:36px;
+	margin-right:12px;
+	outline:medium none;
+	padding:0 0 0 35px;
+	text-shadow:1px 1px 0 white;
+	width:385px;
+}
+
+
+
+
+/* The submit button */
+
+.wrapper button {
+	background:url('buttons.png') no-repeat;
+	width:100px;
+ 
+   
+  
+	height:36px;
+	text-indent:-9999px;
+	overflow:hidden;
+	text-transform:uppercase;
+	border:none;
+	cursor:pointer;
+}
+
+.wrapper button:hover{
+	background-position:left bottom;
+}
+
+
+
+
+

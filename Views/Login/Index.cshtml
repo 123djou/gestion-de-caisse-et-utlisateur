@@ -1,0 +1,82 @@
+﻿@model gestionarretecaisse.Models.utilisateur
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<html>
+<head>
+    <link href="~/Content/auth.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+   
+          
+        <style>
+
+        </style>
+
+</head>
+
+<body>
+
+
+    <div class="wrapper">
+        @using (Html.BeginForm("Index","Login", FormMethod.Post, new { @class = "login" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            if (ViewBag.Message != null)
+            {
+                <div style="border:1px solid red">
+                    @ViewBag.Message
+                </div>
+            }
+
+
+
+            <img class="title" src="~/Content/bh3.gif" style="width:100%"/>
+            <br /><b style="color:red">@ViewBag.erreur</b>
+               <p class="font" >Login</p>
+                @Html.TextBoxFor(a => a.id_utilisateur,new {@class="font",required="required"})
+                <i class="fa fa-user"></i>
+                @Html.ValidationMessageFor(a => a.id_utilisateur )<br />
+                @Html.Label("password",new {@class="font" } )
+                @Html.PasswordFor(a => a.pass,new {@class="font",required="required" })
+                <i class="fa fa-key"></i>
+                @Html.ValidationMessageFor(a => a.pass)
+            
+              
+                <button type="submit" class="submet">
+                    <i class="spinner"></i>
+                    <span class="state">connecter</span>
+                </button>
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+    </div>
+
+    @section scripts{
+        @Scripts.Render("~/bundles/jquiryval")
+    }
+  
+
+
+</body>
+</html>

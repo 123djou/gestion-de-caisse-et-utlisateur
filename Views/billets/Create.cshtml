@@ -1,0 +1,65 @@
+﻿@model gestionarretecaisse.Models.billet
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <div class="wrapper">
+        <b><br /><br /></b>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <br /><br />
+            <div class="form-horizontal">
+                <h4><b style="color:#164b94">Nouvelle Billet</b></h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.Label("num_billet", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @if (Session["error"].Equals("1"))
+                        {<b style="color:red">num de billet exist !</b><br />}
+                        @Html.EditorFor(model => model.Id_billet, new { htmlAttributes = new { @class = "form-control",required="required",@type="number" } })
+                        @Html.ValidationMessageFor(model => model.Id_billet, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.valeur, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @if (Session["error"].Equals("2"))
+                        { <b style="color:red">valeur billet exist !</b>}
+                        @Html.EditorFor(model => model.valeur, new { htmlAttributes = new { @class = "form-control",required="required",@type="number" } })
+                        @Html.ValidationMessageFor(model => model.valeur, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="ajouter" class="bout" /><span style="visibility:hidden">gggggggggg</span><button class="bout" onclick="location.href='@Url.Action("Index")';return false;">retour</button>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+
+
+        @{ Session["error"] = ""; }
+    </div>
+</body>
+</html>

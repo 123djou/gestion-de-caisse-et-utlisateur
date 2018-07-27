@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GestionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="authentification">
+    <Key>
+      <PropertyRef Name="id_utilisateur" />
+    </Key>
+    <Property Name="id_utilisateur" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="pass" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="billet">
+    <Key>
+      <PropertyRef Name="Id_billet" />
+    </Key>
+    <Property Name="Id_billet" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="valeur" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="caisse">
+    <Key>
+      <PropertyRef Name="id_caisse" />
+    </Key>
+    <Property Name="id_caisse" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="type_caisse" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="solde_veille" Type="float" Nullable="false" />
+    <Property Name="solde_actuel" Type="float" Nullable="false" />
+    <Property Name="etat" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="id_utilisateur" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="billetage" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="compte_client">
+    <Key>
+      <PropertyRef Name="Id_compte" />
+    </Key>
+    <Property Name="Id_compte" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="solde" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nom_client" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="prenom_client" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="demande">
+    <Key>
+      <PropertyRef Name="Id_demande" />
+    </Key>
+    <Property Name="Id_demande" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="date_demande" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="montant" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="source_demande" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="distination_demande" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mouvement">
+    <Key>
+      <PropertyRef Name="Id_mouv" />
+    </Key>
+    <Property Name="Id_mouv" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="sens_mouv" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="date_mouv" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="montant" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_caisse" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_compte" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="nb_billet">
+    <Key>
+      <PropertyRef Name="Id_billet" />
+    </Key>
+    <Property Name="Id_billet" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_caisse" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nombre" Type="int" />
+  </EntityType>
+  <EntityType Name="operation">
+    <Key>
+      <PropertyRef Name="Id_operation" />
+    </Key>
+    <Property Name="Id_operation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="niveau_operation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="libelle_operation" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="profil">
+    <Key>
+      <PropertyRef Name="id_profil" />
+    </Key>
+    <Property Name="id_profil" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="fonction" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Trace">
+    <Key>
+      <PropertyRef Name="Id_trace" />
+    </Key>
+    <Property Name="Id_trace" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_caisse" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="date_trace" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ajuster_par" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="montant _fallite" Type="float" />
+    <Property Name="nombre_faillite" Type="int" />
+  </EntityType>
+  <EntityType Name="utilisateur">
+    <Key>
+      <PropertyRef Name="id_utilisateur" />
+    </Key>
+    <Property Name="id_utilisateur" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="nom" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="prenom" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="pass" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="etat_utilisateur" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="id_profil" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="niveau_utilisateur" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_caisse_ToTable_1">
+    <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="1" />
+    <End Role="caisse" Type="Self.caisse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="utilisateur">
+        <PropertyRef Name="id_utilisateur" />
+      </Principal>
+      <Dependent Role="caisse">
+        <PropertyRef Name="id_utilisateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_demande_ToTable">
+    <End Role="caisse" Type="Self.caisse" Multiplicity="1" />
+    <End Role="demande" Type="Self.demande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="caisse">
+        <PropertyRef Name="id_caisse" />
+      </Principal>
+      <Dependent Role="demande">
+        <PropertyRef Name="source_demande" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_demande_ToTable_1">
+    <End Role="caisse" Type="Self.caisse" Multiplicity="1" />
+    <End Role="demande" Type="Self.demande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="caisse">
+        <PropertyRef Name="id_caisse" />
+      </Principal>
+      <Dependent Role="demande">
+        <PropertyRef Name="distination_demande" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mouvement_ToTable">
+    <End Role="caisse" Type="Self.caisse" Multiplicity="1" />
+    <End Role="mouvement" Type="Self.mouvement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="caisse">
+        <PropertyRef Name="id_caisse" />
+      </Principal>
+      <Dependent Role="mouvement">
+        <PropertyRef Name="id_caisse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mouvement_ToTable_1">
+    <End Role="compte_client" Type="Self.compte_client" Multiplicity="1" />
+    <End Role="mouvement" Type="Self.mouvement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="compte_client">
+        <PropertyRef Name="Id_compte" />
+      </Principal>
+      <Dependent Role="mouvement">
+        <PropertyRef Name="id_compte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_nb_billet_Tobillet">
+    <End Role="billet" Type="Self.billet" Multiplicity="1" />
+    <End Role="nb_billet" Type="Self.nb_billet" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="billet">
+        <PropertyRef Name="Id_billet" />
+      </Principal>
+      <Dependent Role="nb_billet">
+        <PropertyRef Name="Id_billet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_nb_billet_Tocaisse">
+    <End Role="caisse" Type="Self.caisse" Multiplicity="1" />
+    <End Role="nb_billet" Type="Self.nb_billet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="caisse">
+        <PropertyRef Name="id_caisse" />
+      </Principal>
+      <Dependent Role="nb_billet">
+        <PropertyRef Name="id_caisse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_use">
+    <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="1" />
+    <End Role="authentification" Type="Self.authentification" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="utilisateur">
+        <PropertyRef Name="id_utilisateur" />
+      </Principal>
+      <Dependent Role="authentification">
+        <PropertyRef Name="id_utilisateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trace_ToTable">
+    <End Role="caisse" Type="Self.caisse" Multiplicity="1" />
+    <End Role="Trace" Type="Self.Trace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="caisse">
+        <PropertyRef Name="id_caisse" />
+      </Principal>
+      <Dependent Role="Trace">
+        <PropertyRef Name="id_caisse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trace_ToTable_1">
+    <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="1" />
+    <End Role="Trace" Type="Self.Trace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="utilisateur">
+        <PropertyRef Name="id_utilisateur" />
+      </Principal>
+      <Dependent Role="Trace">
+        <PropertyRef Name="ajuster_par" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_utilisateur_ToTable">
+    <End Role="profil" Type="Self.profil" Multiplicity="1" />
+    <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profil">
+        <PropertyRef Name="id_profil" />
+      </Principal>
+      <Dependent Role="utilisateur">
+        <PropertyRef Name="id_profil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GestionModelStoreContainer">
+    <EntitySet Name="authentification" EntityType="Self.authentification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="billet" EntityType="Self.billet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="caisse" EntityType="Self.caisse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="compte_client" EntityType="Self.compte_client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="demande" EntityType="Self.demande" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mouvement" EntityType="Self.mouvement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nb_billet" EntityType="Self.nb_billet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="operation" EntityType="Self.operation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="profil" EntityType="Self.profil" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trace" EntityType="Self.Trace" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="utilisateur" EntityType="Self.utilisateur" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_caisse_ToTable_1" Association="Self.FK_caisse_ToTable_1">
+      <End Role="utilisateur" EntitySet="utilisateur" />
+      <End Role="caisse" EntitySet="caisse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_demande_ToTable" Association="Self.FK_demande_ToTable">
+      <End Role="caisse" EntitySet="caisse" />
+      <End Role="demande" EntitySet="demande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_demande_ToTable_1" Association="Self.FK_demande_ToTable_1">
+      <End Role="caisse" EntitySet="caisse" />
+      <End Role="demande" EntitySet="demande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mouvement_ToTable" Association="Self.FK_mouvement_ToTable">
+      <End Role="caisse" EntitySet="caisse" />
+      <End Role="mouvement" EntitySet="mouvement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mouvement_ToTable_1" Association="Self.FK_mouvement_ToTable_1">
+      <End Role="compte_client" EntitySet="compte_client" />
+      <End Role="mouvement" EntitySet="mouvement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_nb_billet_Tobillet" Association="Self.FK_nb_billet_Tobillet">
+      <End Role="billet" EntitySet="billet" />
+      <End Role="nb_billet" EntitySet="nb_billet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_nb_billet_Tocaisse" Association="Self.FK_nb_billet_Tocaisse">
+      <End Role="caisse" EntitySet="caisse" />
+      <End Role="nb_billet" EntitySet="nb_billet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_use" Association="Self.FK_Table_use">
+      <End Role="utilisateur" EntitySet="utilisateur" />
+      <End Role="authentification" EntitySet="authentification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trace_ToTable" Association="Self.FK_Trace_ToTable">
+      <End Role="caisse" EntitySet="caisse" />
+      <End Role="Trace" EntitySet="Trace" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trace_ToTable_1" Association="Self.FK_Trace_ToTable_1">
+      <End Role="utilisateur" EntitySet="utilisateur" />
+      <End Role="Trace" EntitySet="Trace" />
+    </AssociationSet>
+    <AssociationSet Name="FK_utilisateur_ToTable" Association="Self.FK_utilisateur_ToTable">
+      <End Role="profil" EntitySet="profil" />
+      <End Role="utilisateur" EntitySet="utilisateur" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

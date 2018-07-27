@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GestionModelStoreContainer" CdmEntityContainer="GestionEntities1">
+    <EntitySetMapping Name="authentification">
+      <EntityTypeMapping TypeName="GestionModel.authentification">
+        <MappingFragment StoreEntitySet="authentification">
+          <ScalarProperty Name="id_utilisateur" ColumnName="id_utilisateur" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="billet">
+      <EntityTypeMapping TypeName="GestionModel.billet">
+        <MappingFragment StoreEntitySet="billet">
+          <ScalarProperty Name="Id_billet" ColumnName="Id_billet" />
+          <ScalarProperty Name="valeur" ColumnName="valeur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="caisse">
+      <EntityTypeMapping TypeName="GestionModel.caisse">
+        <MappingFragment StoreEntitySet="caisse">
+          <ScalarProperty Name="id_caisse" ColumnName="id_caisse" />
+          <ScalarProperty Name="type_caisse" ColumnName="type_caisse" />
+          <ScalarProperty Name="solde_veille" ColumnName="solde_veille" />
+          <ScalarProperty Name="solde_actuel" ColumnName="solde_actuel" />
+          <ScalarProperty Name="etat" ColumnName="etat" />
+          <ScalarProperty Name="id_utilisateur" ColumnName="id_utilisateur" />
+          <ScalarProperty Name="billetage" ColumnName="billetage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="compte_client">
+      <EntityTypeMapping TypeName="GestionModel.compte_client">
+        <MappingFragment StoreEntitySet="compte_client">
+          <ScalarProperty Name="Id_compte" ColumnName="Id_compte" />
+          <ScalarProperty Name="solde" ColumnName="solde" />
+          <ScalarProperty Name="nom_client" ColumnName="nom_client" />
+          <ScalarProperty Name="prenom_client" ColumnName="prenom_client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="demande">
+      <EntityTypeMapping TypeName="GestionModel.demande">
+        <MappingFragment StoreEntitySet="demande">
+          <ScalarProperty Name="Id_demande" ColumnName="Id_demande" />
+          <ScalarProperty Name="date_demande" ColumnName="date_demande" />
+          <ScalarProperty Name="montant" ColumnName="montant" />
+          <ScalarProperty Name="source_demande" ColumnName="source_demande" />
+          <ScalarProperty Name="distination_demande" ColumnName="distination_demande" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mouvement">
+      <EntityTypeMapping TypeName="GestionModel.mouvement">
+        <MappingFragment StoreEntitySet="mouvement">
+          <ScalarProperty Name="Id_mouv" ColumnName="Id_mouv" />
+          <ScalarProperty Name="sens_mouv" ColumnName="sens_mouv" />
+          <ScalarProperty Name="date_mouv" ColumnName="date_mouv" />
+          <ScalarProperty Name="montant" ColumnName="montant" />
+          <ScalarProperty Name="id_caisse" ColumnName="id_caisse" />
+          <ScalarProperty Name="id_compte" ColumnName="id_compte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nb_billet">
+      <EntityTypeMapping TypeName="GestionModel.nb_billet">
+        <MappingFragment StoreEntitySet="nb_billet">
+          <ScalarProperty Name="Id_billet" ColumnName="Id_billet" />
+          <ScalarProperty Name="id_caisse" ColumnName="id_caisse" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="operation">
+      <EntityTypeMapping TypeName="GestionModel.operation">
+        <MappingFragment StoreEntitySet="operation">
+          <ScalarProperty Name="Id_operation" ColumnName="Id_operation" />
+          <ScalarProperty Name="niveau_operation" ColumnName="niveau_operation" />
+          <ScalarProperty Name="libelle_operation" ColumnName="libelle_operation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="profil">
+      <EntityTypeMapping TypeName="GestionModel.profil">
+        <MappingFragment StoreEntitySet="profil">
+          <ScalarProperty Name="id_profil" ColumnName="id_profil" />
+          <ScalarProperty Name="fonction" ColumnName="fonction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trace">
+      <EntityTypeMapping TypeName="GestionModel.Trace">
+        <MappingFragment StoreEntitySet="Trace">
+          <ScalarProperty Name="Id_trace" ColumnName="Id_trace" />
+          <ScalarProperty Name="id_caisse" ColumnName="id_caisse" />
+          <ScalarProperty Name="date_trace" ColumnName="date_trace" />
+          <ScalarProperty Name="ajuster_par" ColumnName="ajuster_par" />
+          <ScalarProperty Name="montant__fallite" ColumnName="montant _fallite" />
+          <ScalarProperty Name="nombre_faillite" ColumnName="nombre_faillite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="utilisateur">
+      <EntityTypeMapping TypeName="GestionModel.utilisateur">
+        <MappingFragment StoreEntitySet="utilisateur">
+          <ScalarProperty Name="id_utilisateur" ColumnName="id_utilisateur" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="etat_utilisateur" ColumnName="etat_utilisateur" />
+          <ScalarProperty Name="id_profil" ColumnName="id_profil" />
+          <ScalarProperty Name="niveau_utilisateur" ColumnName="niveau_utilisateur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

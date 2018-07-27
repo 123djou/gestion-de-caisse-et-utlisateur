@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "chergement";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <br /><br /><br />
+        <h2>chargement</h2>
+        <form>
+            @Html.DropDownList("id_caisse")
+            <br />
+            @Html.DropDownListFor(op => op, new List<SelectListItem>
+                   {
+                       new SelectListItem {Text="chargement",Value="1"  },
+
+                       new SelectListItem {Text="dechargement",Value="3" }
+                   }, htmlAttributes: new { @class = "form-control" })
+            @Html.EditorFor(mont => mont,new {required="required",@type="number" })
+
+
+        </form>
+        </div></body></html>

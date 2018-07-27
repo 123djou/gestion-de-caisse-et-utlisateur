@@ -1,0 +1,63 @@
+﻿@model IEnumerable<gestionarretecaisse.Models.demande>
+
+@{
+    ViewBag.Title = "voir";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="wrapper">
+    <br /><br /><br /><br />
+        <table class="table" align="center">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.date_demande)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.montant)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.etat)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.distination_demande)
+                </th>
+                <th>action</th>
+            </tr>
+
+            @{ var dem = Session["demande"] as List<gestionarretecaisse.Models.demande>; }
+            @if(dem != null) { 
+            foreach (var item in dem)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date_demande)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.montant)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.etat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.distination_demande)
+                    </td>
+
+                    <td>
+
+                        @Html.ActionLink("supprimer", "Delete", new { id = item.Id_demande })
+                    </td>
+                </tr>
+            }}
+
+        </table>
+
+    </div></body></html>

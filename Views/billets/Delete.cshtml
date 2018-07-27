@@ -1,0 +1,37 @@
+﻿@model gestionarretecaisse.Models.billet
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+       
+        <br /><br /><br />
+        <h3 style="color:red">vous avez supprimer cette billet ?</h3>
+        <br /><br /><br /><br />
+        <h4 style="color:#145c8b">ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayFor(model=>model.Id_billet )</h4>
+       <br /> <h4 style="color:#145c8b">Valeur :&nbsp;&nbsp;&nbsp;&nbsp; @Html.DisplayFor(model => model.valeur )</h4>
+       <br /> <hr />
+    
+       
+        <br /><br />
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="supprimer" class="bout" /> <span style="visibility:hidden">gggggggggg</span><button class="bout" onclick="location.href='@Url.Action("Index")';return false;">retour</button>
+                   
+                </div>
+            }
+       
+    </div>
+</body>
+</html>

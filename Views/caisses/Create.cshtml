@@ -1,0 +1,93 @@
+﻿@model gestionarretecaisse.Models.caisse
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    <link href="~/Content/sbadmin.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+
+        @using (Html.BeginForm())
+        {
+          @Html.AntiForgeryToken()
+         
+            
+            <br />
+            <div class="form-horizontal">
+               
+                <h3 class="h3">Nouvelle caisse</h3>
+                <hr /><br /><br />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <b style="color:red">@Session["error"] </b><br />
+                    @Html.Label("num_caisse", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.id_caisse, new { htmlAttributes = new { @class = "form-control", required = "required",@type="number" } })
+
+                        @Html.ValidationMessageFor(model => model.id_caisse, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.type_caisse, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.type_caisse, new List<SelectListItem>
+                   {
+                       new SelectListItem {Text="caisse principale",Value="1"  },
+                       new SelectListItem {Text="caisse secondaire",Value="2"  },
+                       new SelectListItem {Text="DAB",Value="3" }
+                   }, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.type_caisse, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.billetage, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.billetage, new List<SelectListItem>
+                   {  new SelectListItem {Text="non",Value="non"  },
+                       new SelectListItem {Text="oui",Value="oui" }
+                   }, htmlAttributes: new { @class = "form-control" })
+
+
+                        @Html.ValidationMessageFor(model => model.billetage, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.id_cp, "num_compte:", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("id_cp", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.id_cp, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <p>&nbsp;&nbsp;</p>        <input type="submit" value="Créer" class="bout" />&nbsp;&nbsp;&nbsp;<button class="bout" onclick="location.href='@Url.Action("Index")';return false;">retour</button>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+        @{Session["error"] = "";
+        }
+
+    </div>
+</body>
+
+
+
+</html>

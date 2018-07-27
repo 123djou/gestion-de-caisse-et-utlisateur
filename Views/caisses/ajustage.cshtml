@@ -1,0 +1,44 @@
+﻿@model gestionarretecaisse.Models.transaction
+@{
+    ViewBag.Title = "ajustage";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    <link href="~/Content/sbadmin.css"  rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+        <h3 class="h3">Ajustage de caisse</h3><br /><br /><hr /><br />
+        @if (Model.op==1)
+
+        { <br /><br /><br /><b>votre caisse n'est pas ajuster!</b><br /><hr />        <h3 style="color:#184a74 ">saisir le solde de votre caisse </h3><br />
+        @Html.TextBoxFor(mont => mont.montant, new { @class = "form-control", @readonly = "readonly", @type = "number" })
+            <br /> <br />
+            <button type="submit" class="bout">verifier</button>  <hr /> }
+        else { 
+        using (Html.BeginForm("ajustage", "caisses", FormMethod.Post))
+        {<br /><br />
+        @Html.AntiForgeryToken()
+            <h3 style="color:#184a74 ">saisir le solde de votre caisse </h3><br />
+            @Html.TextBoxFor( mont=>mont.montant, new {@class= "form-control",required="required",@type="number" } )
+            <br /> <br />
+            <button type="submit" class="bout">verifier</button>
+        
+            
+        }
+        <br /><hr style="border:3px" /><br />
+       <br />
+      
+            <h4 style="color:#27455f " >votre caisse est :<b style="color:forestgreen" > @Session["ajustage"] </b></h4>
+            <hr />}
+         
+        
+
+    </div>
+</body>
+</html>
+

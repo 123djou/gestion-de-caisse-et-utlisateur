@@ -1,0 +1,75 @@
+﻿@model IEnumerable<gestionarretecaisse.Models.caisse>
+
+@{
+    ViewBag.Title = "verifier";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+
+</head>
+<body><div class="wrapper">
+    <h3 class="h3">Verification de caisses</h3> <br /><p style="color:#35c635">@ViewBag.msg</p>
+    <hr /><br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Num_caisse" )
+               
+            </th>
+            <th>
+                @Html.DisplayName("Type_caisse")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.solde_veille)
+            </th>
+            <th>
+                @Html.DisplayName("solde_journée")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.etat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.billetage)
+            </th>
+          
+            <th>mouvement</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_caisse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.type_caisse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.solde_veille)<p style="color:#24ac15;display:inline">&nbsp;DT</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.solde_actuel)<p style="color:#24ac15;display:inline">&nbsp;DT</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.etat)
+                </td>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.billetage)
+                </td>
+               
+                <td>
+                  
+                    @Html.ActionLink("voir", "Details", new { id = item.id_caisse }) 
+                
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div></body></html>

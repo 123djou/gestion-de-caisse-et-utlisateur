@@ -1,0 +1,71 @@
+﻿@model IEnumerable<gestionarretecaisse.Models.demande>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    <link href="~/Content/sbadmin.css" rel="stylesheet" />
+</head>
+<body>
+    @{ var user = Session["usr"] as gestionarretecaisse.Models.utilisateur; }
+    <div class="wrapper">
+        <h3 class="h3">liste des demandes  </h3>
+        <hr />
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayName("num_demande")
+                </th>
+                <th>
+                    @Html.DisplayName("date ")
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.montant)
+                </th>
+                <th>
+                    @Html.DisplayName("source")
+                </th>
+                <th>
+                    @Html.DisplayName("reponse")
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                if (user.id_caisse.Equals(item.distination_demande))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id_demande)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date_demande)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.montant)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.source_demande)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("valider", "Edit", new { id = item.Id_demande }) |
+
+                            @Html.ActionLink("refuser", "Delete", new { id = item.Id_demande })
+                        </td>
+                    </tr>
+                }
+            }
+
+
+        </table><br />
+
+    </div>  </body>
+</html>

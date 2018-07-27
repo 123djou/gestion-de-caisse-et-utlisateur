@@ -1,0 +1,50 @@
+﻿@model gestionarretecaisse.Models.demande
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>demande</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.date_demande)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_demande)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.montant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.montant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.source_demande )
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.source_demande )
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.distination_demande )
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.distination_demande )
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_demande }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

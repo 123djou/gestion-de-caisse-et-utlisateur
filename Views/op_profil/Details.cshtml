@@ -1,0 +1,35 @@
+﻿@model gestionarretecaisse.Models.op_profil
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>op_profil</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.operation.niveau_operation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.operation.niveau_operation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.profil.fonction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.profil.fonction)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_op_profil }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

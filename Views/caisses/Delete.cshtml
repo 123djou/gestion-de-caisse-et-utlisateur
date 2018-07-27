@@ -1,0 +1,37 @@
+﻿@model gestionarretecaisse.Models.caisse
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+}
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <br />><br />
+    <div class="wrapper"><br /><br />
+        <h3 style="color:#fe3a3a">vous éte sur de suspendu cette caisse ?</h3>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <br /><br />
+                <h4 style="color:#0c4b75">caisse : @Html.DisplayFor(model => model.id_caisse)</h4>
+                <hr style="width:100%" />
+
+
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="oui" class="bout" />
+                    <button class="bout" onclick="location.href='@Url.Action("Index")';return false;">non</button>
+                </div>
+           
+        }
+       
+    </div>
+   
+</body></html>

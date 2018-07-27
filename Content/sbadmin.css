@@ -1,0 +1,249 @@
+﻿/*!
+ * Start Bootstrap - SB Admin Bootstrap Admin Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Global Styles */
+.time {
+   font-family:Arial yellow, Gadget, sans-serif, Impact[25], fantasy;
+     font-size:11pt;
+     margin-left:30px;
+    font-weight:800;
+    color: yellow;
+    text-align:right;
+    width:auto;
+  padding-right:10px;
+  margin-bottom:5px;
+  margin-top:15px;
+  
+  
+}
+.glyphicon glyphicon-log-out{
+    background-color:#f3f8ad;
+    font-family:Arial yellow, Gadget, sans-serif;
+     font-size:8pt;
+
+}
+body {
+   text-align:center;
+    font-family: "Open Sans", sans-serif;
+            height: 100%;
+         
+}
+
+
+@media(min-width:768px) {
+    body {
+        -ms-align-content: center;
+        -webkit-align-content: center;
+        align-content: center;
+    }
+}
+
+
+#wrapper {
+   
+}
+
+#page-wrapper {
+    width: 100%;
+    padding: 0;
+    background-color: #fff;
+}
+
+.huge {
+    font-size: 50px;
+    line-height: normal;
+}
+
+@media(min-width:768px) {
+
+    #wrapper {
+      
+    }
+
+    #page-wrapper {
+        padding: 10px;
+    }
+
+    
+        
+}
+
+/* Top Navigation */
+
+.top-nav {
+   padding: 0 15px;
+    
+     
+}
+
+.top-nav>li {
+    display: inline-block;
+    float: left;
+   
+}
+
+.top-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+    color: yellow
+}
+
+.top-nav>li>a:hover,
+.top-nav>li>a:focus,
+.top-nav>.open>a,
+.top-nav>.open>a:hover,
+.top-nav>.open>a:focus {
+    color: #fff;
+    background-color: #a2bdee;
+}
+
+.top-nav>.open>.dropdown-menu {
+    float: left;
+    position: absolute;
+    margin-top: 0;
+    border: 1px solid rgba(0,0,0,.15);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.top-nav>.open>.dropdown-menu>li> glyphicon-log-out {
+    white-space: normal;
+
+}
+
+ul.message-dropdown {
+    padding: 0;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+li.message-preview {
+    width: 275px;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+li.message-preview>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+li.message-footer {
+    margin: 5px 0;
+}
+
+ul.alert-dropdown {
+    width: 200px;
+}
+
+/* Side Navigation */
+
+@media(min-width:768px) {
+   
+       .side-nav {
+           font-family:"Arial Black", Gadget, sans-serif;
+           font-size:9pt;
+        position: fixed;
+        top: 51px;
+        left: 225px;
+        width: 225px;
+        margin-left: -225px;
+       text-align:left;
+        border-radius: 0;
+        overflow-y: auto;
+        color:yellow;
+
+  background: #2980b9; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #2980b9 , #2c3e50); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #2980b9 , #2c3e50);
+-webkit-box-shadow: 0 6px 12px #faf8ae;
+    box-shadow: 0 6px 12px #faf8ae;
+       
+        bottom: 0;
+        overflow-x: hidden;
+        padding-bottom: 40px;
+    }
+      
+    .side-nav>li>a {
+        width: 225px;
+        color:yellow;
+    }
+
+    .side-nav li a:hover,
+    .side-nav li a:focus {
+        outline: none;
+        background-color: #4aaee1 !important;
+    }
+}
+
+.side-nav>li>ul {
+    padding: 0;
+}.side-nav li>ul{display: block;}
+.side-nav li:hover ul{ display:block; 
+                        padding: 1px;
+    text-decoration: none;
+    color: yellow;
+}
+.navbar-brand {
+  float: left;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  color:yellow;
+  background-image:url(/fonts/2395_max.png);
+  background-position:center;
+  box-shadow:inset;
+  
+  background-size:cover;
+  width:225px
+}
+.side-nav>li>ul>li>a {
+   display: block;
+    padding: 10px 15px 10px 38px;
+    text-decoration: none;
+    color: yellow;
+    
+}
+  .navbar-collapse.collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+                       background: #2980b9; /* fallback for old browsers */
+
+       
+ /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #16222A ,#2980b9); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #16222A , #2980b9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+         /* fallback for old browsers */
+         color:yellow
+  }
+
+
+.side-nav>li>ul>li>a:hover {
+    color: #fff; 
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a{
+    color:yellow;
+    font-size:13px;
+  
+}
+/* Flot Chart Containers */
+
+.flot-chart {
+    display: block;
+    height: 400px;
+}
+
+.flot-chart-content {
+    width: 100%;
+    height: 100%;
+}
+

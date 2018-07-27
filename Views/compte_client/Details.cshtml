@@ -1,0 +1,56 @@
+﻿@model gestionarretecaisse.Models.compte_client
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+<html><head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    
+</head>   
+
+<body>
+    <h2>Details</h2>
+    <div class="wrapper">
+
+        <form class="ajout">
+            <h4>compte_client: @Html.DisplayFor(model => model.Id_compte) </h4>
+            <hr />
+
+            <dl class="dl-horizontal">
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.nom_client)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.nom_client)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.prenom_client)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.prenom_client)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.solde)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.solde)
+                </dd>
+            </dl>
+
+             <button class="bout" onclick="location.href='@Url.Action("Transaction")';return false;">transaction</button>
+            <button class="bout" onclick="location.href='@Url.Action("Index")';return false;">retour</button>
+         
+        </form>
+
+    </div>
+</body>
+</html>

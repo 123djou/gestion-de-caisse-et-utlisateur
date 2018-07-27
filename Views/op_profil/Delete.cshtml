@@ -1,0 +1,40 @@
+﻿@model gestionarretecaisse.Models.op_profil
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="wrapper">
+
+        <div style="text-align:left">
+            <br /><br /><br />
+            <h3 style="color:red">vous avez supprimer cette element ?</h3>
+            <br /><br /><br /><br />
+            <h4 style="color:#145c8b">ID:<span style="visibility:hidden">************************</span> @Html.DisplayFor(model => model.id_op_profil)</h4>
+            <br /> <h4 style="color:#145c8b">operation :<span style="visibility:hidden">***************</span> @Html.DisplayFor(model => model.operation.libelle_operation)</h4>
+            <br /> <h4 style="color:#145c8b">profil :<span style="visibility:hidden">********************</span>  @Html.DisplayFor(model => model.id_profil)</h4>
+            <br /> <hr />
+        </div>
+
+
+        <br /><br />
+        @using (Html.BeginForm())
+            {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="supprimer" class="bout" /> <span style="visibility:hidden">********</span><button class="bout" onclick="location.href='@Url.Action("Index")';return false;">retour</button>
+
+            </div>
+        }
+    </div>
+</body></html>

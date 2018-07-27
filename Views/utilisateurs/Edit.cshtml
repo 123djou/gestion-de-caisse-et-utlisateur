@@ -1,0 +1,117 @@
+﻿@model gestionarretecaisse.Models.utilisateur
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <div class="wrapper">
+        
+
+        @using (Html.BeginForm( ))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <br /><br />
+                <h3 style="color:#194e76">Modifier utilisateur  : @Html.DisplayFor(model => model.id_utilisateur) </h3>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                <div class="form-group" style="visibility:hidden">
+
+                    @Html.Label("ID :", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.id_utilisateur, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.id_utilisateur, "", new { @class = "text-danger", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("nom :", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.nom, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.nom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("prenom :", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.prenom, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.prenom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("password:", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.pass, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.pass, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.Label("etat  :", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.etat_utilisateur, new List<SelectListItem>
+                   {
+                       new SelectListItem {Text="actif",Value="actif"  },
+                       new SelectListItem {Text="non actif",Value="non_actif"  },
+                       new SelectListItem {Text="suspendu",Value="suspendu" }
+                   }, htmlAttributes: new { @class = "form-control" })
+
+
+                        @Html.ValidationMessageFor(model => model.etat_utilisateur, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.id_profil, "id_profil", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("id_profil",null, htmlAttributes: new { @class = "form-control", @id = "prof" })
+                        </div></div>
+                        <div class="form-group">
+                            @Html.Label("niveau", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.niveau_utilisateur, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.niveau_utilisateur, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            @Html.Label("id caisse", "id_caisse", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @if (Session["error"].Equals("2"))
+                                { <span style="color:red">impossible d'affecter deux utilisateurs a un méme caisse !</span>}
+                                @Html.DropDownList("id_caisse", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.id_caisse, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                @Html.HiddenFor(model=>model.id_agence)
+                @Html.HiddenFor(model=>model.creer_par)
+                @Html.HiddenFor(model=>model.date_creation )
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="enregistrer" class="bout" /><span style="visibility:hidden">gggggggggg</span><button class="bout" onclick="location.href='@Url.Action("Index")';return false;">retour</button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+                    @{Session["error"] = "";   }
+
+
+                </div>
+</body>
+</html>

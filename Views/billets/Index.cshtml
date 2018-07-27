@@ -1,0 +1,72 @@
+﻿@model IEnumerable<gestionarretecaisse.Models.billet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+<body>
+    
+    <div class="wrapper">
+        <h3 style="color:#22649c">Liste des Billets </h3>
+       <hr /> <p>
+            @Html.ActionLink("ajouter nouvel billet", "Create")
+        </p><hr />
+      
+        <table align="center">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_billet)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.valeur)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.creer_par)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.date_creation)
+                </th>
+
+
+                <th> action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id_billet)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.valeur)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.creer_par)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date_creation)
+                    </td>
+
+
+                    <td>
+
+
+                        @Html.ActionLink("supprimer", "Delete", new { id = item.Id_billet })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

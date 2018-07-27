@@ -1,0 +1,68 @@
+﻿@model gestionarretecaisse.Models.demande
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    <link href="~/Content/sbadmin.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <div class="wrapper">
+        <br /><br />
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h3 class="h3">Demande d'alimentation</h3>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+  
+
+           
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.montant, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.montant, new { htmlAttributes = new { @class = "form-control",required="required",@type="number" } })
+                        @Html.ValidationMessageFor(model => model.montant, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+               
+
+                <div class="form-group">
+                    @Html.LabelFor(model=>model.distination_demande, "distination", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("distination_demande", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.distination_demande, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="envoyer" class="bout" /><span style="visibility:hidden">ggjjggggggggg</span><button class="bout" onclick="location.href='@Url.Action("Index")';return false;">retour</button>
+                       
+
+
+                    </div>
+                </div>
+            </div>
+        }
+
+      
+    </div>
+
+        
+
+  
+</body>
+</html>

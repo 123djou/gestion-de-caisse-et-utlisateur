@@ -1,0 +1,110 @@
+﻿@model IEnumerable<gestionarretecaisse.Models.utilisateur>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+   
+</head>
+<body >
+    <div >
+        <br /><br /><br /><br /><br /><br /><h3 class="h3">Gesion des utilisateur</h3>
+       <br /><hr /> <p>
+            @Html.ActionLink("ajouter un nouveau utilisateur", "Create")
+        </p><hr />
+        <table class="tb" >
+            <tr>
+                <th>
+                    @Html.DisplayName("ID")
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.prenom)
+                </th>
+
+                <th>
+                    @Html.DisplayName("etat")
+                </th>
+                <th>
+                    @Html.DisplayName("niveau")
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.date_creation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.date_modification)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.creer_par)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.modifier_par)
+                </th>
+
+               
+                <th>
+                    @Html.DisplayName("caisse")
+                </th>
+                <th>
+                    @Html.DisplayName("profil")
+                </th>
+                <th>action </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_utilisateur)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.prenom)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.etat_utilisateur)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.niveau_utilisateur)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date_creation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date_modification)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.creer_par)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.modifier_par)
+                    </td>
+               
+                    <td>
+                        @Html.DisplayFor(modelItem => item.caisse.id_caisse)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.profil.id_profil)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editer", "Edit", new { id = item.id_utilisateur }) 
+                       
+                        @Html.ActionLink("suspendu", "Delete", new { id = item.id_utilisateur })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

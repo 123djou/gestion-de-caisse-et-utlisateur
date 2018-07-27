@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f5a51e138651437db897af2277af47cc" Name="Diagram1">
+        <EntityTypeShape EntityType="GestionModel.agence" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionModel.billet" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionModel.caisse" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionModel.compte" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionModel.demande" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionModel.Direction" Width="1.5" PointX="8.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionModel.mouvement" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionModel.nb_billet" Width="1.5" PointX="1.125" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionModel.op_profil" Width="1.5" PointX="8.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionModel.operation" Width="1.5" PointX="6" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionModel.profil" Width="1.5" PointX="6" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionModel.Trace" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionModel.utilisateur" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="GestionModel.FK_Direction_ToTableagense" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionModel.FK_utilisateur_agence" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionModel.FK_nb_billet_Tobillet" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionModel.FK_caisse_To_cp" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionModel.FK_demande_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionModel.FK_demande_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionModel.FK_mouvement_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionModel.FK_nb_billet_Tocaisse" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionModel.FK_Trace_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionModel.FK_utilisateur_caisse" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionModel.FK_Table_operation" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionModel.FK_Table_Toprofil" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionModel.FK_utilisateur_ToTable" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

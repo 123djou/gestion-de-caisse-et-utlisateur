@@ -1,0 +1,205 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <title>Gestion de caisse</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/Content/sbadmin.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="~/Content/moris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="~/Content/awesome.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" type="image/png" href="~/Content/logo.png" />
+
+    <script type="text/javascript">
+        function date_heure(id) {
+            date = new Date;
+            annee = date.getFullYear();
+            moi = date.getMonth();
+            mois = new Array('Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Ao&ucirc;t', 'Septembre', 'Octobre', 'Novembre', 'D&eacute;cembre');
+            j = date.getDate();
+            jour = date.getDay();
+            jours = new Array('Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi');
+            h = date.getHours();
+            if (h < 10) {
+                h = "0" + h;
+            }
+            m = date.getMinutes();
+            if (m < 10) {
+                m = "0" + m;
+            }
+            s = date.getSeconds();
+            if (s < 10) {
+                s = "0" + s;
+            }
+            resultat = jours[jour] + ' ' + j + ' ' + mois[moi] + ' ' + annee + '      ' + h + ':' + m + ':' + s;
+            document.getElementById(id).innerHTML = resultat;
+            setTimeout('date_heure("' + id + '");', '1000');
+            return true;
+        }
+
+        function hide() {
+
+            document.getElementById("hide").style.display = "none";
+
+        }
+       
+    </script>
+</head>
+<body>
+    @{
+        var user = Session["usr"] as gestionarretecaisse.Models.utilisateur;
+        ViewBag.id = user.id_utilisateur;
+        ViewBag.ag = user.id_agence;
+        ViewBag.cs = user.id_caisse;
+        string u = user.id_profil;
+        var demande = Session["demande"] as List<gestionarretecaisse.Models.demande>;
+        var caisse = Session["etatcaisse"] as List<gestionarretecaisse.Models.caisse>;
+    }<div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+
+            <span class="navbar-brand" style="color:rgba(255, 251, 36, 0.00)">AGENCE : @ViewBag.ag </span>
+
+                <!-- Top Menu Items -->
+                <ul class="nav navbar-right top-nav">
+                    @if (user.id_profil == "4444")
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope">&nbsp;<b style="font-family:Arial Black, Gadget, sans-serif;
+           font-size:10pt">Demande d'alimentation</b></i> <b class="caret"></b></a>
+
+
+                            <ul class="dropdown-menu message-dropdown">
+                                @{if (demande != null)
+                                    {
+                                        foreach (var item in demande)
+                                        {
+                                            if (item.source_demande.Equals(user.id_caisse))
+                                            {
+                                                <li class="message-preview">
+
+                                                    <div class="media">
+                                                        <p>votre demande envoyer a</p> <b>@item.distination_demande </b>
+                                                        <div class="media-body">
+                                                            <h5 class="media-heading">
+                                                                est <strong>  @item.etat </strong>
+                                                            </h5>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                </li>}
+                                        }
+                                    }
+                                }
+                                <li class="message-footer">
+                                    <a href="#">@Html.ActionLink("voir tous", "voir", "demandes")</a>
+                                </li>
+                            </ul>
+
+                        </li>}
+                  
+<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"><b style="font-family:Arial Black, Gadget, sans-serif;
+           font-size:10pt"> Utilisateur : @ViewBag.id  </b></i> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+
+
+                            <li>
+                                <i class="glyphicon glyphicon-log-out" style="display:inline"></i>
+                                  @Html.ActionLink(" deconnecter", "logout", "Login") 
+                                
+                             </li>
+
+                        </ul>
+                    </li>
+                </ul>
+                <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav side-nav">
+                        <li>
+                            <a data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i><b style="color:yellow">parametrage</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-fw fa-caret-down"></i></a>
+
+                            <ul class="nav navbar-nav side-nav">
+                                @{var list = Session["list"] as List<gestionarretecaisse.Models.op_profil>;
+                                    foreach (var i in list)
+                                    {
+
+                                        <li> @Html.ActionLink(i.operation.libelle_operation, i.operation.view, i.operation.controller) </li>
+
+                                    }
+
+
+                                }
+                            </ul>
+
+                        </li>
+                    </ul>
+
+                    <ul class="time">
+
+              <span  class="time">
+                      <img src="~/fonts/bank-2.png" /><b>agence&nbsp;:&nbsp;&nbsp;@user.id_agence </b>
+                        </span>
+ 
+                    </ul>
+                </div>
+
+</nav>
+
+
+        <div>
+            @if (user.id_caisse==null)
+            {    <span style="color:#1a3d75;text-align:left;margin-top:60px;margin-right:100px;left:240px; position: absolute;font-family: 'Arial Rounded MT' ;font-size:larger ">@user.id_profil <br /> <img src="~/Content/images.png" />  </span>}
+            @if (user.id_caisse!=null)
+            {    <span style="color:#1a3d75;text-align:left;margin-top:60px;margin-right:100px;left:240px; position: absolute;font-family: 'Arial Rounded MT' ;font-size:larger ">@user.id_caisse<br /> <img src="~/Content/CAISSE.jpg" />  </span>}
+            @if (user.id_profil.Equals("3333"))
+            {    <span style="color:#1a3d75;text-align:left;margin-top:60px;margin-right:100px;left:240px; position: absolute;font-family: 'Arial Rounded MT' ;font-size:larger ">@user.id_caisse<br /><img src="~/Content/icon-bg-06.png" />  </span>}
+            <a style="margin-top:70px;margin-right:100px;right:50px; position: absolute" href="javascript:window.history.back()"><img style="background-color:lightgray " src="~/Content/back.png" /><br /></a>
+            <a style="margin-top:70px;margin-right:70px;right:10px; position: absolute" href="javascript:window.history.forward()"><img style="background-color:lightgray " src="~/Content/forw.png" /><br /></a>
+         
+            @if (user.id_profil.Equals("2222"))
+            {    <span style="color:#1a3d75;text-align:left;margin-top:60px;margin-right:100px;left:240px; position: absolute; font-family: 'Arial Rounded MT' ;font-size:larger ">@user.id_profil <br /> <img src="~/Content/cont.png" />  </span>}
+           <span id="date_heure" style="color:#1a3d75;text-align:center ;margin-top:70px;margin-right:10px;left:600px; position:absolute; font-family: 'Arial Rounded MT' ;font-size:larger">
+                <script type="text/javascript">window.onload = date_heure('date_heure');</script>
+            </span>
+        </div>
+        }
+    </div>
+
+    <script src="~/Scripts/quir.js"></script>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+
+    @RenderBody()
+    @{Session["demande"] = null; }
+    <footer>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><hr />
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&copy; Banque De L'habitat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agence : @user.id_agence </p>
+    </footer>
+</body>
+
+</html>

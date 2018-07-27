@@ -1,0 +1,49 @@
+﻿@model gestionarretecaisse.Models.compte_client
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>compte_client</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.solde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.solde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_client)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_client)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prenom_client)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prenom_client)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

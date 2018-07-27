@@ -1,0 +1,50 @@
+﻿
+@model gestionarretecaisse.Models.utilisateur
+@{
+    ViewBag.Title = "acceil";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    <link href="~/Content/sbadmin.css" rel="stylesheet" />
+    
+    <style>
+    .wp{
+         
+        
+      margin-left:200px;
+      margin-right:10px;
+       
+        
+    }
+    .img{
+
+        width:900px;
+        height:250px
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="wp">
+        <br /><br /><br /><br /><br />
+        @{var us = Session["usr"] as gestionarretecaisse.Models.utilisateur;  }
+     
+        <form class="ajout">
+
+
+            <h3 class="h3"> Code&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp; &nbsp; &nbsp;:&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;    @us.id_utilisateur </h3><br />
+            <h3 class="h3"> Nom &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;: &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp; &nbsp; &nbsp;&nbsp;   @us.nom </h3> <br />
+            <h3 class="h3"> Prenom  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  @us.prenom </h3><br />
+            <h3 class="h3"> Profil &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;   &nbsp; &nbsp; : &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  @us.profil.fonction </h3><br /><br />
+
+
+        </form><br /><br /><br /><br /><br />
+
+
+    </div>
+</body>
+</html>

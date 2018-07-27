@@ -1,0 +1,157 @@
+﻿
+@model gestionarretecaisse.Models.compte
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    <link href="~/Content/sbadmin.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="wrapper">
+
+       <h3 class="h3">Transaction Client</h3>
+        <div class="form-horizontal">
+            <br /><br />
+            @using (Html.BeginForm("Index", "compte", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                if (ViewBag.confirm == "compte inexistant !")
+                {    <b style="color:#ff0000"> @ViewBag.confirm</b>}
+            
+                <div class="form-group">
+                    <h4><b class="control-label col-sm-2">Compte&nbsp;client&nbsp;:</b></h4>
+                  
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(a => a.Id_compte, htmlAttributes: new { @class = "form-control", required = "required" })
+                    </div>
+                </div>
+
+
+                <button type="submit" class="bout">
+                    <b>confirmer</b>
+                </button>
+            }
+          
+            <hr />
+            <br />
+            @if (ViewBag.confirm == "trouve")
+            {
+                <table class="table" align="center">
+                    <tr>
+                        <th>
+                            Numéro de compte
+                        </th>
+
+                        <th>
+                           Nom
+                        </th>
+
+                        <th>
+                           Prenom
+                        </th>
+
+                        <th>
+                           Solde
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayFor(model => model.Id_compte)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => model.nom_client)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => model.prenom_client)
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => model.solde)<p style="display:inline;color:forestgreen">&nbsp;DT</p>
+                        </th>
+                    </tr>
+                </table>
+
+              <br />  <hr />
+            }
+
+
+            <b style="color:#3ac112"> @Session["confirm"] </b><br />
+
+            @using (Html.BeginForm("Transaction", "compte", FormMethod.Post, new { @class = "login" }))
+
+            {
+                <div class="form-group">
+                 
+                  
+                     
+                    
+                       <b style="color:red"> @ViewBag.error </b><br />
+                        <br />
+
+                        <h4><b class="control-label col-sm-2">operation&nbsp;:</b></h4>
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => Model.Id_compte, new List<SelectListItem>
+                   {new SelectListItem {Text="retrait",Value="1"  },
+                       new SelectListItem {Text="versement",Value="2"  } }
+                     , new { @class = "form-control" })
+                        </div>
+                        <br /><br />
+                        <h4><b class="control-label col-sm-2">montant&nbsp;:</b></h4>
+                        <div class="col-md-10">
+
+                            @Html.TextBoxFor(model => model.solde, "0", new { @class = "form-control",required="required",@type="number" })
+                            <br />
+                        </div>
+                    </div>
+
+
+
+                    <button type="submit" class="bout">
+
+                        <b>valider</b>
+                    </button>
+                    
+            }
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

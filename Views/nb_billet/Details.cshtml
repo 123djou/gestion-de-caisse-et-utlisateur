@@ -1,0 +1,43 @@
+﻿@model gestionarretecaisse.Models.nb_billet
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>nb_billet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.billet.creer_par)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.billet.creer_par)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.caisse.type_caisse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.caisse.type_caisse)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_billet }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<gestionarretecaisse.Models.mouvement>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+
+
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    <link href="~/Content/sbadmin.css" rel="stylesheet" />
+</head>
+<body><div class="wrapper">
+    <p class="h3" style="display:inline">Mouvement de caisse : <div style="color:#0094ff ;display:inline"class="h3">@ViewBag.id_caisse</div> </p><br /><hr/><br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("operation")
+            </th>
+            <th>
+                @Html.DisplayName("sens")
+            </th>
+            <th>
+                @Html.DisplayName("date_mouvement")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.montant )
+            </th>
+            <th>
+                @Html.DisplayName("Num_caisse")
+            </th>
+            <th>
+                @Html.DisplayName("Num_compte")
+            </th>
+            <th>action</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr><td>
+    @Html.DisplayFor(modelItem => item.operation )
+          </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sens_mouv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_mouv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.montant)<p style="display:inline;color:#2eb60d">&nbsp;DT</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.caisse.id_caisse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_compte )
+                </td>
+                <td>
+                  
+                    @Html.ActionLink("annuler","annuler", new { id = item.Id_mouv })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div></body></html>

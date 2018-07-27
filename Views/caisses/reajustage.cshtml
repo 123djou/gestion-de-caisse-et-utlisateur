@@ -1,0 +1,79 @@
+﻿ @model IEnumerable<gestionarretecaisse.Models.Trace>
+
+@{
+    ViewBag.Title = "reajustage";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="wrapper">
+       
+        <h3 class="h3">liste des caisses non ajuster</h3>
+        <br />
+        <hr />
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayName("Num_caisse")
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.date_trace)
+                </th>
+                <th>
+                    @Html.DisplayName("solde_journée" )
+                </th>
+                <th>
+                    @Html.DisplayName("Montant_saisi")
+                </th>
+                <th>
+                    @Html.DisplayName("ecart")
+                </th>
+             
+                <th>
+                    @Html.DisplayName("ajuster_par")
+                </th>
+                <th><b>Action</b></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.caisse.id_caisse)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date_trace)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.caisse.solde_actuel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.montant_saisir)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ecart)
+                    </td>
+                 
+                 
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ajuster_par )
+                    </td>
+                   
+                    <td>
+
+                    
+                                @Html.ActionLink("reajuster", "ajustage", new { id = item.id_caisse })
+                                @Html.ActionLink("verifier", "verifier", new { id = item.id_caisse })
+                                @Html.ActionLink("fermer", "fermer", new { id = item.Id_trace })
+              </td>
+                </tr>
+            }
+
+        </table>
+        </div></body></html>

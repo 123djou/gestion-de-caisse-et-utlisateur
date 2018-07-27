@@ -1,0 +1,108 @@
+﻿@model IEnumerable<gestionarretecaisse.Models.caisse>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <br /><br /><br /><br /><br /><br />
+    <p>
+        @Html.ActionLink("ajouter nouvelle caisse", "Create")
+    </p><hr />
+    <table class="tb" >
+        <tr>
+            <th>
+                @Html.DisplayName("ID")
+            </th>
+            <th>
+                @Html.DisplayName("type")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.solde_veille)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.solde_actuel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_cp )
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.etat)
+            </th>
+         
+            <th>
+                @Html.DisplayNameFor(model => model.billetage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.creer_par)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modifier_par)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date_creation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date_modification)
+            </th>
+           
+            <th >action</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_caisse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.type_caisse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.solde_veille)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.solde_actuel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_cp )
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.etat)
+                </td>
+           
+                <td>
+                    @Html.DisplayFor(modelItem => item.billetage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.creer_par)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modifier_par)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_creation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_modification)
+                </td>
+             
+                <td>
+                    @Html.ActionLink("Editer", "Edit", new { id = item.id_caisse }) |
+                   
+                    @Html.ActionLink("suspendu", "Delete", new { id = item.id_caisse })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

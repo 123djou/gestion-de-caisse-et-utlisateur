@@ -1,0 +1,32 @@
+﻿@model gestionarretecaisse.Models.utilisateur
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    <link href="~/Content/sbadmin.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="wrapper"><br /><br /><br />
+        <h3 style="color:#ff0000">vous éte sur de suspendu cet utilisateur ?</h3>
+      <br /><b></b>
+        <h4 class="h3">utilisateur : @Html.DisplayFor(model => model.id_utilisateur) </h4>
+        <hr />
+        
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="suspondu" class="bout" /> <span style="visibility:hidden">gggggggggg</span><button class="bout" onclick="location.href='@Url.Action("Index")';return false;">retour</button>
+                
+            </div>
+        }
+    </div>
+    </body></html>

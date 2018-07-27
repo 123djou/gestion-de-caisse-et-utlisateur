@@ -1,0 +1,79 @@
+﻿@model gestionarretecaisse.Models.sendmail
+
+@{
+    ViewBag.Title = "sendmail";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    <link href="~/Content/sbadmin.css" rel="stylesheet" />
+
+</head>
+<html>
+<body>
+    <div class="wrapper">
+
+        <h3 class="h3">Notification ecart caisse</h3>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+               
+                <hr /><b>@Session["send"]</b>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                  <b class = "control-label col-md-2" >adresse&nbsp;&nbsp;:</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control",required="required",@type="email" } })
+                        @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("mot de passe:", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.pass, new { htmlAttributes = new { @class = "form-control",required="required",@type="password" } })
+                        @Html.ValidationMessageFor(model => model.pass, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <hr /><br />
+                <div class="form-group">
+ <b class = "control-label col-md-2" >envoyer&nbsp;à&nbsp;&nbsp;&nbsp;: </b> 
+                    <div class="col-md-10">
+                        @Html.DropDownList("to",null ,htmlAttributes : new { @class = "form-control" } )
+                        @Html.ValidationMessageFor(model => model.to, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                 <b class = "control-label col-md-2">object&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.sub, new { htmlAttributes = new { @class = "form-control",disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.sub, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("message:", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.msg, new { htmlAttributes = new { @class = "form-control",disabled="disabled" } })
+                        @Html.ValidationMessageFor(model => model.msg, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="envoyer" class="bout" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        </div></body></html>

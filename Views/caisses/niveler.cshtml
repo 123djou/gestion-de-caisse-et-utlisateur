@@ -1,0 +1,40 @@
+﻿@model gestionarretecaisse.Models.billet
+
+@{
+    ViewBag.Title = "niveler";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    <link href="~/Content/sbadmin.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+       
+        <h3 class="h3">Nivellement de caisse</h3>
+
+        <br /><hr /><br />
+    <div class="form-horizontal">
+   @using (Html.BeginForm())
+   {
+    @Html.AntiForgeryToken()
+        <b style="color:#ff0000">@ViewBag.error</b>
+        <b style="color:#24b014">@ViewBag.msg</b><br /><br />
+        <div class="form-group">
+            
+         <b class = "control-label col-md-2" style="color:#143755;font-size:medium">Montant&nbsp;&nbsp;&nbsp;:</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.valeur, new { htmlAttributes = new { @class = "form-control", required = "required" ,@type="number"} })
+            </div>
+            </div><br />
+            <input type="submit" class="bout" value="niveler" />
+            }
+        </div>
+
+    </div></body></html>
+ 
+

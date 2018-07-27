@@ -1,0 +1,71 @@
+﻿@model gestionarretecaisse.Models.Trace
+
+@{
+    ViewBag.Title = "DAB";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <div class="wrapper">
+        <br />
+        <h2>Gérer DAB</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                  <b class = "control-label col-md-2">Num&nbsp;DAB&nbsp;:</b>
+                    <div class="col-md-10">
+                        @Html.DropDownList("id_caisse", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.id_caisse, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+        <br />
+
+                <div class="form-group">
+                    <b class="control-label col-md-2">operation&nbsp;&nbsp;:</b>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.montant_saisir , new List<SelectListItem>
+                   {
+                       new SelectListItem {Text="chargement",Value="1"  },
+
+                       new SelectListItem {Text="dechergement",Value="2" }
+                   }, htmlAttributes: new { @class = "form-control" })
+                     
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b style="color:red"> &nbsp;&nbsp;&nbsp;&nbsp; @ViewBag.erreur</b><br /><br />
+                    <b class="control-label col-md-2">Montant&nbsp;&nbsp;:</b>
+                    <div class="col-md-10">
+                       
+                        @Html.EditorFor(model => model.ecart, new { htmlAttributes = new { @class = "form-control", required = "required", @type = "number" } })
+                        @Html.ValidationMessageFor(model => model.ecart, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+        <br /><br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="valider" class="bout" />
+                    </div>
+                </div>
+            </div><br /><br /><b style="color:#ff0000">@ViewBag.error</b>
+        }<b style="color:forestgreen">@ViewBag.message</b>
+
+
+    </div>
+</body></html>

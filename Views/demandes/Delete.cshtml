@@ -1,0 +1,77 @@
+﻿@model gestionarretecaisse.Models.demande
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Layoutop.cshtml";
+}
+
+
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="wrapper">
+        <br /><br /><br /><br />
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/ajoutusr.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="wrapper">
+    <br /><br /><br /><br />
+        <h3 style="color:#1a3862">vous éte sur de supprimer cette demande ?</h3>
+       
+            <br />
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.date_demande)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.date_demande)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.montant)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.montant)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.caisse.type_caisse)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.caisse.type_caisse)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.caisse1.type_caisse)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.caisse1.type_caisse)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="bout" /> |
+                    @Html.ActionLink("retour", "voir")
+                </div>
+            }
+        </div></body></html>
